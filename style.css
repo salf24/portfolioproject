@@ -320,7 +320,7 @@ input::placeholder, textarea::placeholder {
 
 .accordion-content {
   padding: 10px;
-  background-color: #f1f1f1;
+  background-color: var(--accent-color);
   display: none;
   border-radius: 4px;
 }
