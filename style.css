@@ -3,10 +3,11 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
   color: var(--text-color);
 }
 
-/* Dark Mode Variables */
+/* Color Variables */
 :root {
   --base-color: white;
   --base-variant: #e8e9ed;
@@ -34,6 +35,7 @@ body {
   --primary-color: #465379;
   --accent-color: #31639d;
   --header-bg: #1f2d4d;
+  --primary-text: #151414;
 }
 
 /* Header */
@@ -63,12 +65,6 @@ nav ul {
   align-items: center;
   list-style: none;
   gap: 40px;
-}
-
-nav ul li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 nav ul li.name {
@@ -120,28 +116,125 @@ nav ul li a:hover {
   fill: #e8e9ed;
 }
 
+
 /* Sections */
 section {
   background-color: var(--base-variant);
   padding: 20px;
-  margin-top: 80px; 
+  margin-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 h1, h2 {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 30px;
 }
+
 
 p {
   margin: 10px 0 20px 0;
-  color: var(--secondary-text);
+  color: var(--base-v);
+  font-size: 20px;
+  text-align: center;
 }
 
-.greeting {
-  align-items: center;
+#about p {    
+  font-size: 25px;
+  margin: 1em 0;
+  display: block;   
+}
+
+#about img {
+  width: 400px;
+  height: auto;       
+  border: 3px solid #ccc;     
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  margin-top: 1rem;
+  transition: transform 0.3s ease;
+}
+/* Clock */
+#clock {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#live-clock {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Project and Blog Cards */
+.project-cards,
+#blog-container {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: var(--base-variant);
+  width: 100%;
 }
 
-/* Button Styling */
+.project-card,
+.blog-card {
+  background-color: #f9f9f9;
+  color: var(--text-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.project-card:hover,
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.project-card h3,
+.blog-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.project-card p,
+.blog-card p {
+  font-size: 1rem;
+  color: var(--primary-text);
+  line-height: 1.5;
+}
+
+#blog-container h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+#blog-container p.blog-intro {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: var(--primary-text);
+}
+
+/* Buttons */
+.card-btn,
 button {
   border: none;
   padding: 0.8em 2em;
@@ -153,10 +246,13 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center;
+  margin-top: 10px;
 }
 
+.card-btn:hover,
 button:hover {
-  background-color: var(--accent-color);
+  background-color: var(--header-bg);
 }
 
 /* Form Styling */
@@ -164,12 +260,10 @@ button:hover {
   margin: 50px auto;
   padding: 2em;
   width: 400px;
-  background: #1c1f2b;
+  background: var(--header-bg);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  gap: 10px;
   text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -177,7 +271,6 @@ button:hover {
 label {
   color: #ffffff;
   font-weight: bold;
-  margin-bottom: 8px;
 }
 
 input, textarea {
@@ -194,23 +287,6 @@ textarea {
   min-height: 100px;
 }
 
-button {
-  border: none;
-  padding: 0.8em 2em;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 4px;
-  font: inherit;
-  text-transform: uppercase;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--accent-color);
-}
-
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent-color);
@@ -220,36 +296,65 @@ input::placeholder, textarea::placeholder {
   color: var(--secondary-text);
 }
 
+/* Accordion */
+.accordion .accordion-item {
+  margin: 10px 0;
+}
+
+.accordion-header {
+  background-color:var(--header-bg);
+  color: white;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: var(--primary-color);
+}
+
+.accordion-content {
+  padding: 10px;
+  background-color: #f1f1f1;
+  display: none;
+  border-radius: 4px;
+}
+
+.accordion-content p {
+  margin: 0;
+}
+
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
   background-color: var(--header-bg);
-  color: var(--text-color);
 }
 
 footer p {
   font-size: 14px;
 }
 
-
-/* Responsive Design */
+/* Responsive */
 @media screen and (max-width: 768px) {
   nav ul {
-      flex-direction: column;
-      gap: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 
   nav ul li.name {
-      font-size: 18px;
+    font-size: 18px;
   }
 
   .card {
-      width: 90%;
-      height: auto;
+    width: 90%;
   }
 
   button {
-      width: 100%;
+    width: 100%;
   }
 }
