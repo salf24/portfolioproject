@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateGreeting() {
         const hour = new Date().getHours();
         let greeting = "Welcome!";
-        if (hour > 5 && hour < 12) {
+        if (hour  < 12) {
             greeting = "Good Morning!";
-        } else if (hour > 13 && hour < 18) {
+        } else if (hour < 18) {
             greeting = "Good Afternoon!";
         } else {
             greeting = "Good Evening!";
